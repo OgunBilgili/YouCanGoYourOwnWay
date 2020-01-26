@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace YouCanGoYourOwnWay
 {
@@ -9,30 +11,40 @@ namespace YouCanGoYourOwnWay
             int x = 0, y = 0;
 
             int limit = Int32.Parse(Console.ReadLine());
+            Stack<char> Marker = new Stack<char>();
+
+            StringBuilder sb = new StringBuilder();
             
+
             char[] lydiasPath = "EESSSESE".ToCharArray();
             char[,] origin = new char[limit,limit];
 
+            bool MarkE = false, MarkS = false;
 
-
-            for(int i=0; i < lydiasPath.Length; i++)
+            for(int a = 0; a < lydiasPath.Length ;)
             {
-                if (lydiasPath[i] == 'E')
+
+                if(lydiasPath[a] == 'E')
                 {
-                    origin[x, y] = 'E';
-                    y += 1;
+                    while (!MarkS)
+                    {
+                        if (lydiasPath[a] == 'S')
+                            MarkS = true;
+                        sb.Append(lydiasPath[a]);
+                        a++;
+                    }+
+
+                    MarkS = false;
                 }
 
-                else
-                {
-                    origin[x, y] = 'S';
-                    x += 1;
-                }
             }
 
 
+            EES SSE SE
+                
+            SEE ESS ES
 
-            
+
         }
     }
 }
@@ -61,5 +73,19 @@ namespace YouCanGoYourOwnWay
 
             //Console.WriteLine(array[3,3]);
 
+            for(int i=0; i < lydiasPath.Length; i++)
+            {
+                if (lydiasPath[i] == 'E')
+                {
+                    origin[x, y] = 'E';
+                    y += 1;
+                }
+
+                else
+                {
+                    origin[x, y] = 'S';
+                    x += 1;
+                }
+            }
 
 */
